@@ -2,6 +2,9 @@
 import scrapy
 
 
+from gazettemachine.items import GazetteMachineItem
+
+
 class ParliamentnaSpider(scrapy.Spider):
     name = 'parliamentna'
     allowed_domains = ['laws.parliament.na']
@@ -13,7 +16,4 @@ class ParliamentnaSpider(scrapy.Spider):
 
     def parse_listing(self, response):
         for href in response.css('table.page-content-table td:first-child a::attr(href)'):
-            yield {
-                'jurisdiction': 'na',
-                'href': href.get(),
-            }
+            yield GazetteMachineItem(jurisdiction='na', url=href.extract())
