@@ -7,7 +7,14 @@ URLs are posted into S3, from where Gazette Machine pulls them in.
 
 Scrapes Namibia Government Gazettes from https://laws.parliament.na/gazettes/namibia-government-gazettes.php?id=1
 
-## License
+# Deploying
+
+To deploy:
+
+1. Install the Scraping Hub commandline client with `pip install shub`
+2. Run `shub deploy`
+
+# License
 
 Licensed under an [MIT License](LICENSE).
 
