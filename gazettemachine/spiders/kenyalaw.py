@@ -12,7 +12,7 @@ class KenyalawSpider(scrapy.Spider):
     allowed_domains = ['kenyalaw.org', 'www.kenyalaw.org']
 
     def start_requests(self):
-        for year in range(2020, datetime.date.today().year + 1):
+        for year in range(2019, datetime.date.today().year + 1):
             yield scrapy.Request(f'http://www.kenyalaw.org/kenya_gazette/gazette/year/{year}/', self.parse)
 
     def parse(self, response):
