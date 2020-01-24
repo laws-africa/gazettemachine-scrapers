@@ -7,6 +7,19 @@ URLs are posted into S3, from where Gazette Machine pulls them in.
 
 Scrapes Namibia Government Gazettes from https://laws.parliament.na/gazettes/namibia-government-gazettes.php?id=1
 
+## Kenya
+
+Scrapes the Kenya Gazette archive from http://www.kenyalaw.org/kenya_gazette/
+
+# Development
+
+To develop locally:
+
+1. clone this repo
+2. setup a virtualenv: ``virtualenv --no-site-packages env --pytho=python3``
+3. activate: `source env/bin/activate`
+3. install dependencies: `pip install -r requirements.txt`
+
 # Deploying
 
 To deploy:
