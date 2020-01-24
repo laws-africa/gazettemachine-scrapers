@@ -21,4 +21,5 @@ class GovRWSpider(scrapy.Spider):
         for href in response.css('.news li a::attr(href)'):
             href = href.get()
             if href.lower().endswith('.pdf'):
-                yield GazetteMachineItem(jurisdiction='rw', url=href)
+                url = response.urljoin(href)
+                yield GazetteMachineItem(jurisdiction='rw', url=url)

@@ -23,4 +23,5 @@ class KenyalawSpider(scrapy.Spider):
         for href in response.css('.gazette-content .sd a::attr(href)'):
             href = href.get()
             if href.lower().endswith('.pdf'):
-                yield GazetteMachineItem(jurisdiction='ke', url=href)
+                url = response.urljoin(href)
+                yield GazetteMachineItem(jurisdiction='ke', url=url)
