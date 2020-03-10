@@ -5,7 +5,7 @@ import scrapy
 
 from gazettemachine.items import GazetteMachineItem
 
-href_re = re.compile(r"href='([^']+)'")
+href_re = re.compile(r"href='([^'&]+)")
 
 
 class EnoticesZMSpider(scrapy.Spider):
