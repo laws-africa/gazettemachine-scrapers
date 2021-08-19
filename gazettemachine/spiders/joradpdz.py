@@ -13,7 +13,7 @@ class JoradpdzScraper(scrapy.Spider):
         # years
         # TODO: once deployed and run once, only do this year and next year
         current_year = datetime.date.today().year
-        for year in range(1962, current_year + 2):
+        for year in range(current_year, current_year + 2):
             yield scrapy.Request(f'https://www.joradp.dz/JRN/ZF{year}.htm', self.parse_listing,
                                  cb_kwargs={'year': year})
 
