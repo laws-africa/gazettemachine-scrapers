@@ -16,7 +16,7 @@ Scrapes the Kenya Gazette archive from http://www.kenyalaw.org/kenya_gazette/
 To develop locally:
 
 1. clone this repo
-2. setup a virtualenv: ``virtualenv --no-site-packages env --pytho=python3``
+2. setup a virtualenv: ``virtualenv --no-site-packages env --python=python3``
 3. activate: `source env/bin/activate`
 3. install dependencies: `pip install -r requirements.txt`
 
