@@ -19,6 +19,7 @@ To deploy:
 1. Install the Scraping Hub commandline client with `pip install shub`
 2. Run `shub deploy`
 3. In [Zyte](https://app.zyte.com/p/375525/spiders) configure the spider's AWS and output settings, similar to the other spiders.
+4. In gazettemachine, update `settings.GM['SCRAPINGHUB_SPIDERS']` to include the new spider, if it should be run daily.
 
 * AWS_ACCESS_KEY_ID: from AWS
 * AWS_SECRET_ACCESS_KEY: from AWS
