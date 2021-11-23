@@ -21,11 +21,11 @@ class CongoSpider(scrapy.Spider):
                 url = href.get()
                 if url.lower().endswith('.pdf'):
                     url = response.urljoin(url)
-                    yield GazetteMachineItem(jurisdiction='cd', url=url)
+                    yield GazetteMachineItem(jurisdiction='cg', url=url)
 
     def parse_special(self, response):
         for href in response.css('div.collection.jos h4.titre_annee a::attr(href)'):
             url = href.get()
             if url.lower().endswith('.pdf'):
                 url = response.urljoin(url)
-                yield GazetteMachineItem(jurisdiction='cd', url=url)
+                yield GazetteMachineItem(jurisdiction='cg', url=url)
