@@ -1,8 +1,5 @@
 # -*- coding: utf-8 -*-
-import urllib.parse as urlparse
 import scrapy
-import datetime
-
 
 from gazettemachine.items import GazetteMachineItem
 
@@ -16,7 +13,9 @@ class GovRWSpider(scrapy.Spider):
         # year, month and gazette listing pages all have the same format
         for href in response.css('.tx-filelist table td a::attr(href)'):
             url = href.get()
-            if url.lower().endswith('.pdf'):
+
+            # base file URL https://www.minijust.gov.rw/index.php?eID=dumpFile&t=f&f=31203&token=...
+            if 'index.php?eID=dumpFile&t=f' in url:
                 url = response.urljoin(url)
                 yield GazetteMachineItem(jurisdiction='rw', url=url)
             else:
