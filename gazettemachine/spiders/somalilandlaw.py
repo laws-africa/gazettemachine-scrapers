@@ -15,5 +15,5 @@ class SomalilandLawSpider(scrapy.Spider):
             url = href.get()
             if url.lower().endswith('.pdf'):
                 url = response.urljoin(url)
-                yield GazetteMachineItem(jurisdiction='so', url=url)
+                yield GazetteMachineItem(jurisdiction='so-sl', url=url)
 
