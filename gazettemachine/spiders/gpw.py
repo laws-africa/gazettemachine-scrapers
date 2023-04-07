@@ -27,22 +27,25 @@ class GPWSpider(scrapy.Spider):
             "https://gpwonline.sharepoint.com/sites/gpw-web/_api/web/GetListUsingPath(DecodedUrl=@a1)/RenderListDataAsStream?@a1=%27%2Fsites%2Fgpw%2Dweb%2FShared%20Documents%27&RootFolder=%2Fsites%2Fgpw%2Dweb%2FShared%20Documents%2FActs&View=7a8fe278-931f-49d0-9374-c8d511d7c610&SortField=PublicationDte&SortDir=Desc&TryNewExperienceSingle=TRUE"
         )
     ]
-    jurisdictions = {
-        "za-ec": "Eastern-Cape",
-        "za-gt": "Gauteng",
-        "za-kzn": "KwaZulu-Natal",
-        "za-lim": "Limpopo",
-        "za-mp": "Mpumalanga",
-        "za-nw": "North-West",
-        "za-nc": "Northern-Cape",
-    }
+    provincial_gazette_urls = [
+        (
+            "https://gpwonline.sharepoint.com/:f:/s/gpw-web/EmxUR8jfyrNFpprDc0uNmxABvA3Kpk8UqAhV79fCcGsI8A?e=tUAuXw",
+            "https://gpwonline.sharepoint.com/sites/gpw-web/_api/web/GetListUsingPath(DecodedUrl=@a1)/RenderListDataAsStream?@a1=%27%2Fsites%2Fgpw%2Dweb%2FShared%20Documents%27&RootFolder=%2Fsites%2Fgpw%2Dweb%2FShared%20Documents%2FProvincial&View=7a8fe278-931f-49d0-9374-c8d511d7c610&SortField=PublicationDte&SortDir=Desc&TryNewExperienceSingle=TRUE"
+        )
+    ]
 
     def start_requests(self):
-        # start by getting and storing an auth cookie
         for i, (auth_url, list_url) in enumerate(self.national_gazette_urls):
+            # start by getting and storing an auth cookie
             yield scrapy.Request(auth_url, self.authenticated, cb_kwargs={'list_url': list_url}, meta={'cookiejar': i})
 
-    def authenticated(self, response, list_url):
+        for i, (auth_url, list_url) in enumerate(self.provincial_gazette_urls):
+            # start by getting and storing an auth cookie
+            yield scrapy.Request(auth_url, self.authenticated,
+                                 cb_kwargs={'list_url': list_url, 'provincial': True},
+                                 meta={'cookiejar': f'p-{i}'})
+
+    def authenticated(self, response, list_url, provincial=False):
         # now start the actual crawling
         headers = {
             'authority': 'gpwonline.sharepoint.com',
@@ -59,9 +62,38 @@ class GPWSpider(scrapy.Spider):
 
         body = '{"parameters":{"__metadata":{"type":"SP.RenderListDataParameters"},"RenderOptions":1445895,"AllowMultipleValueFilterForTaxonomyFields":true,"AddRequiredFields":true,"FilterOutChannelFoldersInDefaultDocLib":true}}'
         yield scrapy.Request(list_url, self.parse, headers=headers, body=body, method="POST",
+                             cb_kwargs={'provincial': provincial},
                              meta={'cookiejar': response.meta['cookiejar']})
 
-    def parse(self, response):
+    def parse(self, response, provincial):
         for row in response.json()['ListData']['Row']:
             url = f"https://gpwonline.sharepoint.com/sites/gpw-web/_layouts/15/download.aspx?SourceUrl={row['FileRef.urlencode']}"
-            yield GazetteMachineItem(jurisdiction='za', url=url)
+
+            juri = 'za'
+            if provincial:
+                # guess province from filename
+                fname = row['FileRef'].lower()
+                if 'ecape' in fname:
+                    juri = 'za-ec'
+
+                elif 'mpu' in fname:
+                    juri = 'za-mp'
+
+                elif 'lim' in fname:
+                    juri = 'za-lp'
+
+                elif 'kz' in fname:
+                    juri = 'za-kzn'
+
+                elif 'nwe' in fname:
+                    juri = 'za-nw'
+
+                elif 'gau' in fname:
+                    juri = 'za-gp'
+
+                elif 'ncape' in fname:
+                    juri = 'za-nc'
+
+                # fs and wc aren't published by gpw
+
+            yield GazetteMachineItem(jurisdiction=juri, url=url)
