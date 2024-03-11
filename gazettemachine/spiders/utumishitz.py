@@ -10,5 +10,5 @@ class UtumishiTZSpider(scrapy.Spider):
 
     def parse(self, response):
         for href in response.css('.page-content .document-card-list-item a::attr(href)'):
-            url = response.urljoin(href.get()).strip()
+            url = response.urljoin(href.get().strip())
             yield GazetteMachineItem(jurisdiction='tz', url=url)
