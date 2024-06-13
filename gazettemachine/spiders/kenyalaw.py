@@ -13,13 +13,14 @@ class KenyalawSpider(scrapy.Spider):
 
     def start_requests(self):
         # KG
-        for year in range(2019, datetime.date.today().year + 1):
+        for year in range(2024, datetime.date.today().year + 1):
             yield scrapy.Request(f'http://www.kenyalaw.org/kenya_gazette/gazette/year/{year}/', self.parse_kg_listing)
 
         # KGS
-        # 2021 only
-        # TODO: add 2022 when it appears
-        for nid in ['11363']:
+        # 2022
+        # 2023
+        # 2024
+        for nid in ['11550', '11741', '12002']:
             yield scrapy.Request(f'http://kenyalaw.org/kl/index.php?id={nid}', self.parse_kgs_listing)
 
     def parse_kg_listing(self, response):
@@ -34,7 +35,7 @@ class KenyalawSpider(scrapy.Spider):
                 yield GazetteMachineItem(jurisdiction='ke', url=url)
 
     def parse_kgs_listing(self, response):
-        for href in response.css('.page-content .bodytext a::attr(href)'):
+        for href in response.css('.contenttable a::attr(href)'):
             href = href.get()
             if href.lower().endswith('.pdf'):
                 url = response.urljoin(href)
