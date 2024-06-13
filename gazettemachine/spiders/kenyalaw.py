@@ -17,10 +17,11 @@ class KenyalawSpider(scrapy.Spider):
             yield scrapy.Request(f'http://www.kenyalaw.org/kenya_gazette/gazette/year/{year}/', self.parse_kg_listing)
 
         # KGS
+        # 2021
         # 2022
         # 2023
         # 2024
-        for nid in ['11550', '11741', '12002']:
+        for nid in ['11363', '11550', '11741', '12002']:
             yield scrapy.Request(f'http://kenyalaw.org/kl/index.php?id={nid}', self.parse_kgs_listing)
 
     def parse_kg_listing(self, response):
