@@ -14,8 +14,7 @@ class KenyalawSpider(scrapy.Spider):
     def start_requests(self):
         # KG
         for year in range(2024, datetime.date.today().year + 1):
-            pass
-            #yield scrapy.Request(f'http://www.kenyalaw.org/kenya_gazette/gazette/year/{year}/', self.parse_kg_listing)
+            yield scrapy.Request(f'http://www.kenyalaw.org/kenya_gazette/gazette/year/{year}/', self.parse_kg_listing)
 
         # KGS
         # 2021
