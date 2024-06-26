@@ -14,7 +14,7 @@ class GPWSpider(scrapy.Spider):
         (
             # national
             "https://gpwonline.sharepoint.com/:f:/s/gpw-web/EhxpblSM5NpCh_N3xAZ6rukB6dTsdHf3ZZJKYh0Pa8J9iA?e=Mc3e73",
-            "https://gpwonline.sharepoint.com/sites/gpw-web/_api/web/GetListUsingPath(DecodedUrl=@a1)/RenderListDataAsStream?@a1=%27%2Fsites%2Fgpw%2Dweb%2FShared%20Documents%27&RootFolder=%2Fsites%2Fgpw%2Dweb%2FShared%20Documents%2FGovernment&View=7a8fe278-931f-49d0-9374-c8d511d7c610&SortField=PublicationDte&SortDir=Desc&TryNewExperienceSingle=TRUE"
+            "https://gpwonline.sharepoint.com/sites/gpw-web/_api/web/GetListUsingPath(DecodedUrl=@a1)/RenderListDataAsStream?@a1=%27%2Fsites%2Fgpw%2Dweb%2FShared%20Documents%27&RootFolder=%2Fsites%2Fgpw%2Dweb%2FShared%20Documents%2FGovernment%2F2021%2D2025&View=7a8fe278-931f-49d0-9374-c8d511d7c610&TryNewExperienceSingle=TRUE",
         ),
         (
             # legal#
