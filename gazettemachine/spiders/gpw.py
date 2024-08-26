@@ -14,23 +14,23 @@ class GPWSpider(scrapy.Spider):
         (
             # national
             "https://gpwonline.sharepoint.com/:f:/s/gpw-web/EhxpblSM5NpCh_N3xAZ6rukB6dTsdHf3ZZJKYh0Pa8J9iA?e=Mc3e73",
-            "https://gpwonline.sharepoint.com/sites/gpw-web/_api/web/GetListUsingPath(DecodedUrl=@a1)/RenderListDataAsStream?@a1=%27%2Fsites%2Fgpw%2Dweb%2FShared%20Documents%27&RootFolder=%2Fsites%2Fgpw%2Dweb%2FShared%20Documents%2FGovernment%2F2021%2D2025&View=7a8fe278-931f-49d0-9374-c8d511d7c610&TryNewExperienceSingle=TRUE",
+            "https://gpwonline.sharepoint.com/sites/gpw-web/_api/web/GetListUsingPath(DecodedUrl=@a1)/RenderListDataAsStream?@a1=%27%2Fsites%2Fgpw%2Dweb%2FShared%20Documents%27&RootFolder=%2Fsites%2Fgpw%2Dweb%2FShared%20Documents%2FGovernment%2F2021%2D2025&View=7a8fe278-931f-49d0-9374-c8d511d7c610&TryNewExperienceSingle=TRUE&RowLimit=200",
         ),
         (
             # legal#
             "https://gpwonline.sharepoint.com/:f:/s/gpw-web/EuUVRm9dXElCjAXBiPdf2xgBAbjuQaq_s8j9c8x7qbVFzg?e=ZCkbyO",
-            "https://gpwonline.sharepoint.com/sites/gpw-web/_api/web/GetListUsingPath(DecodedUrl=@a1)/RenderListDataAsStream?@a1=%27%2Fsites%2Fgpw%2Dweb%2FShared%20Documents%27&RootFolder=%2Fsites%2Fgpw%2Dweb%2FShared%20Documents%2FLegal&View=7a8fe278-931f-49d0-9374-c8d511d7c610&SortField=PublicationDte&SortDir=Desc&TryNewExperienceSingle=TRUE"
+            "https://gpwonline.sharepoint.com/sites/gpw-web/_api/web/GetListUsingPath(DecodedUrl=@a1)/RenderListDataAsStream?@a1=%27%2Fsites%2Fgpw%2Dweb%2FShared%20Documents%27&RootFolder=%2Fsites%2Fgpw%2Dweb%2FShared%20Documents%2FLegal&View=7a8fe278-931f-49d0-9374-c8d511d7c610&SortField=PublicationDte&SortDir=Desc&TryNewExperienceSingle=TRUE&RowLimit=200"
         ),
         (
             # acts
             "https://gpwonline.sharepoint.com/:f:/s/gpw-web/EooEacaIkXZHtl0ZxDAC5aEBqhpN139p3l0jNC-9n6VSNw?e=E2VTxS",
-            "https://gpwonline.sharepoint.com/sites/gpw-web/_api/web/GetListUsingPath(DecodedUrl=@a1)/RenderListDataAsStream?@a1=%27%2Fsites%2Fgpw%2Dweb%2FShared%20Documents%27&RootFolder=%2Fsites%2Fgpw%2Dweb%2FShared%20Documents%2FActs&View=7a8fe278-931f-49d0-9374-c8d511d7c610&SortField=PublicationDte&SortDir=Desc&TryNewExperienceSingle=TRUE"
+            "https://gpwonline.sharepoint.com/sites/gpw-web/_api/web/GetListUsingPath(DecodedUrl=@a1)/RenderListDataAsStream?@a1=%27%2Fsites%2Fgpw%2Dweb%2FShared%20Documents%27&RootFolder=%2Fsites%2Fgpw%2Dweb%2FShared%20Documents%2FActs&View=7a8fe278-931f-49d0-9374-c8d511d7c610&SortField=PublicationDte&SortDir=Desc&TryNewExperienceSingle=TRUE&RowLimit=200"
         )
     ]
     provincial_gazette_urls = [
         (
             "https://gpwonline.sharepoint.com/:f:/s/gpw-web/EmxUR8jfyrNFpprDc0uNmxABvA3Kpk8UqAhV79fCcGsI8A?e=tUAuXw",
-            "https://gpwonline.sharepoint.com/sites/gpw-web/_api/web/GetListUsingPath(DecodedUrl=@a1)/RenderListDataAsStream?@a1=%27%2Fsites%2Fgpw%2Dweb%2FShared%20Documents%27&RootFolder=%2Fsites%2Fgpw%2Dweb%2FShared%20Documents%2FProvincial&View=7a8fe278-931f-49d0-9374-c8d511d7c610&SortField=PublicationDte&SortDir=Desc&TryNewExperienceSingle=TRUE"
+            "https://gpwonline.sharepoint.com/sites/gpw-web/_api/web/GetListUsingPath(DecodedUrl=@a1)/RenderListDataAsStream?@a1=%27%2Fsites%2Fgpw%2Dweb%2FShared%20Documents%27&RootFolder=%2Fsites%2Fgpw%2Dweb%2FShared%20Documents%2FProvincial%2F2021%2D2025&View=7a8fe278-931f-49d0-9374-c8d511d7c610&TryNewExperienceSingle=TRUE&SortField=PublicationDte&SortDir=Desc&RowLimit=200"
         )
     ]
 
