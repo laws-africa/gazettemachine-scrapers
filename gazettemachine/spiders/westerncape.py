@@ -21,6 +21,6 @@ class WesternCapeSpider(scrapy.Spider):
             url = href.get()
             if url.lower().endswith('.pdf'):
                 url = response.urljoin(url)
+                # change www to d7
+                url = url.replace('www.westerncape.gov.za', 'd7.westerncape.gov.za')
                 yield GazetteMachineItem(jurisdiction='za-wc', url=url)
-            else:
-                yield response.follow(href, self.parse_pg_listing)
